@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Table with Filter</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        input[type="text"] {
+            margin-bottom: 10px;
+            padding: 6px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Contacts</h2>
+
+<input type="text" id="filterInput" placeholder="Search by name or email..." onkeyup="filterTable()">
+
+<table id="contactTable">
+    <thead>
+    <tr>
+        <th><input type="checkbox" id="selectAll" onclick="toggleCheckboxes(this)"></th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>Tushar Rathod</td>
+        <td>tushar@example.com</td>
+        <td>9876543210</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>Kavya Kaba</td>
+        <td>kavya@example.com</td>
+        <td>9123456780</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>Ravi Sharma</td>
+        <td>ravi.sharma@example.com</td>
+        <td>9012345678</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>Neha Mehta</td>
+        <td>neha.mehta@example.com</td>
+        <td>9988776655</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>Arjun Reddy</td>
+        <td>arjun.reddy@example.com</td>
+        <td>8877665544</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>Sana Shaikh</td>
+        <td>sana.shaikh@example.com</td>
+        <td>9090909090</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>Aman Joshi</td>
+        <td>aman.joshi@example.com</td>
+        <td>9191919191</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>Priya Desai</td>
+        <td>priya.desai@example.com</td>
+        <td>8080808080</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>Rohit Malhotra</td>
+        <td>rohit.malhotra@example.com</td>
+        <td>7070707070</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>Anjali Nair</td>
+        <td>anjali.nair@example.com</td>
+        <td>6060606060</td>
+    </tr>
+    </tbody>
+</table>
+
+<script>
+    function filterTable() {
+        const input = document.getElementById("filterInput").value.toLowerCase();
+        const rows = document.querySelectorAll("#contactTable tbody tr");
+
+        rows.forEach(row => {
+            const name = row.cells[1].textContent.toLowerCase();
+            const email = row.cells[2].textContent.toLowerCase();
+            row.style.display = name.includes(input) || email.includes(input) ? "" : "none";
+        });
+    }
+
+    function toggleCheckboxes(source) {
+        const checkboxes = document.querySelectorAll("#contactTable tbody input[type='checkbox']");
+        checkboxes.forEach(cb => cb.checked = source.checked);
+    }
+</script>
+
+</body>
+</html>
