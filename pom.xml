@@ -68,7 +68,7 @@
           <plugin>
              <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-surefire-plugin</artifactId>
-      <version>3.2.2</version> <!-- use a stable version -->
+      <version>3.2.5</version> <!-- use a stable version -->
     </plugin>
     </plugins>
   </build>
